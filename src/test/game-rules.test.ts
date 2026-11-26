@@ -1,0 +1,22 @@
+import { describe, expect, it } from "vitest";
+import { INITIAL_LIVES, TOTAL_FRAGMENTS, collectFirefly, takeDamage, isCorrect, nextProgress, getQuestion, questionCount, enemyTypes } from "@/game/rules";
+describe("Game rules from the brief", () => {
+  it("starts every level with 3 lives", () => expect(INITIAL_LIVES).toBe(3));
+  it("never exceeds three lives when collecting fireflies", () => expect(collectFirefly(3)).toBe(3));
+  it("restores a missing life with a firefly", () => expect(collectFirefly(2)).toBe(3));
+  it("removes one life on enemy contact or a fall", () => expect(takeDamage(3)).toBe(2));
+  it("ends with zero lives rather than negative lives", () => expect(takeDamage(0)).toBe(0));
+  it("requires two fragments", () => expect(TOTAL_FRAGMENTS).toBe(2));
+  it("accepts B for algorithms", () => expect(isCorrect(getQuestion(1, 0), 1)).toBe(true));
+  it("accepts B for events", () => expect(isCorrect(getQuestion(1, 1), 1)).toBe(true));
+  it("accepts B for variables", () => expect(isCorrect(getQuestion(1, 2), 1)).toBe(true));
+  it("accepts B for loops", () => expect(isCorrect(getQuestion(2, 0), 1)).toBe(true));
+  it("accepts C for Boolean data", () => expect(isCorrect(getQuestion(2, 1), 2)).toBe(true));
+  it("rejects a physical part as an algorithm", () => expect(isCorrect(getQuestion(1), 0)).toBe(false));
+  it("provides three questions for day", () => expect(questionCount(1)).toBe(3));
+  it("provides two questions for night", () => expect(questionCount(2)).toBe(2));
+  it("limits day enemies to rock and spiny plant", () => expect(enemyTypes(1)).toEqual(["golem", "plant"]));
+  it("includes all four enemy types at night", () => expect(enemyTypes(2)).toEqual(["golem", "plant", "pincers", "spirit"]));
+  it("unlocks level 2 after the first chest", () => expect(nextProgress(1)).toEqual({ fragments: 1, nextLevel: 2, victory: false }));
+  it("opens the way home after the second chest", () => expect(nextProgress(2)).toEqual({ fragments: 2, nextLevel: null, victory: true }));
+});

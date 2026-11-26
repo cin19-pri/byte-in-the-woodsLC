@@ -1,0 +1,13 @@
+# Byte in the Woods
+- [x] Integrate original art and magical start screen.
+- [x] Build cinematic, two platform levels, touch controls and synthesized sound.
+- [x] Add educational chests, life rules, defeat and victory.
+- [x] Verify gameplay and mobile layout.
+- [x] Fit menu, cinematic and levels to one screen; remove surrounding bars and explanatory sections; use Poppins throughout.
+- [x] Integrate resources.pdf backgrounds, enemies and closed/open chests; soften platform artwork.
+- [x] Replace randomized question banks with the five supplied questions and verify answers.
+- [x] Extend both levels with progressively harder jumps and enemies; remove gray obstacles.
+- [x] Cap lives at three, recolor WOODS, remove victory star and center GAME OVER.
+- [x] Verify the extended adventure and changed screens on desktop and phone.
+- [x] Embed all game artwork in self-contained SVG source without asset-pointer or CDN dependencies.
+- [x] Verify every animation frame, menu and both forest backgrounds with the asset CDN blocked.
